@@ -34,7 +34,8 @@ jobs:
         with:
           role-to-assume: ${{ secrets.GHA_ROLE_ARN }}
           role-session-name: pipelinerolesession
-          aws-region: ${{ env.AWS_REGION }}
+          aws-region: ${{ vars.DEFAULT_AWS_REGION }}
+          # aws-region: ${{ env.AWS_REGION }}
 
       - name: Copy files to the test website with the AWS CLI
         run: aws s3 ls
