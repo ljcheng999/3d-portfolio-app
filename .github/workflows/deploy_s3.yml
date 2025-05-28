@@ -29,13 +29,6 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v4
 
-      # - name: Set up Node.js ${{ matrix.node-version }}
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: ${{ matrix.node-version }}
-      # - name: Install deps
-      #   run: npm install
-
       - name: Configure AWS credentials from AWS account
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -57,6 +50,8 @@ jobs:
       - name: list current directory
         run: ls -al .
 
-      - name: Copy files to the test website with the AWS CLI
-        # run: aws s3 ls
+      - name: Copy files to the S3 with the AWS CLI
         run: aws s3 cp $GITHUB_WORKSPACE/dist s3://${{ secrets.AWS_BUCKET_NAME }} --recursive
+
+      - name: Invalidate Cloudfront
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID }} --paths /*
