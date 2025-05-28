@@ -18,6 +18,9 @@ permissions: #https://docs.github.com/en/actions/deployment/security-hardening-y
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GHA_ROLE_ARN: ${{ vars.GHA_ROLE_ARN }}
+      AWS_REGION: ${{ vars.DEFAULT_AWS_REGION }}
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
