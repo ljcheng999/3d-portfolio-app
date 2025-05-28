@@ -47,9 +47,6 @@ jobs:
       - name: Build and Package
         run: npm run build
 
-      - name: list current directory
-        run: ls -al .
-
       - name: Copy files to the S3 with the AWS CLI
         run: aws s3 cp $GITHUB_WORKSPACE/dist s3://${{ secrets.AWS_BUCKET_NAME }} --recursive
 
