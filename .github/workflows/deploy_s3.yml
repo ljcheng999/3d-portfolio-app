@@ -23,7 +23,6 @@ jobs:
     if: github.ref == 'refs/heads/dev'
     environment: dev
     env:
-      # GHA_ROLE_ARN: ${{ vars.GHA_ROLE_ARN }}
       AWS_REGION: ${{ vars.DEFAULT_AWS_REGION }}
 
     steps:
