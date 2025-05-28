@@ -6,6 +6,11 @@ on:
       - dev
       - main
 
+env:
+  BUCKET_NAME: "BUCKET-NAME"
+  GHA_ROLE_ARN: ${{ vars.GHA_ROLE_ARN }}
+  AWS_REGION: ${{ vars.DEFAULT_AWS_REGION }}
+
 permissions: #https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services#requesting-the-access-token
   id-token: write
   contents: read
@@ -22,7 +27,7 @@ jobs:
         with:
           role-to-assume: ${{ env.GHA_ROLE_ARN }}
           role-session-name: pipelinerolesession
-          aws-region: ${{ env.DEFAULT_AWS_REGION }}
+          aws-region: ${{ env.AWS_REGION }}
 
       - name: Copy files to the test website with the AWS CLI
         run: aws s3 ls
