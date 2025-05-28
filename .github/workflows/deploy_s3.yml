@@ -1,5 +1,5 @@
 name: Deploy to Dev
-run-name: ${{ github.actor }} test
+run-name: ${{ github.actor }} - Portfolio webapp pipeline
 # on:
 #   push:
 #     branches:
@@ -9,13 +9,13 @@ run-name: ${{ github.actor }} test
 on: push
 
 env:
-  BUCKET_NAME: "BUCKET-NAME"
-  GHA_ROLE_ARN: ${{ vars.GHA_ROLE_ARN }}
-  AWS_REGION: ${{ vars.DEFAULT_AWS_REGION }}
+  NODE_VERSION: 22
 
 permissions: #https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services#requesting-the-access-token
   id-token: write
   contents: read
+
+# ${{ secrets.AWS_BUCKET_NAME }}
 
 jobs:
   build_dev:
@@ -29,13 +29,34 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v4
 
+      # - name: Set up Node.js ${{ matrix.node-version }}
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: ${{ matrix.node-version }}
+      # - name: Install deps
+      #   run: npm install
+
       - name: Configure AWS credentials from AWS account
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.GHA_ROLE_ARN }}
           role-session-name: pipelinerolesession
           aws-region: ${{ vars.DEFAULT_AWS_REGION }}
-          # aws-region: ${{ env.AWS_REGION }}
+
+      - name: Setup Node ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build and Package
+        run: npm run build
+
+      - name: list current directory
+        run: ls -al .
 
       - name: Copy files to the test website with the AWS CLI
-        run: aws s3 ls
+        # run: aws s3 ls
+        run: aws s3 cp $GITHUB_WORKSPACE/dist s3://${{ secrets.AWS_BUCKET_NAME }} --recursive
