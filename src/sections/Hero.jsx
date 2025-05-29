@@ -50,8 +50,8 @@ const Hero = () => {
             </div>
 
             <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
-              Hi, I am Johnny, a SRE/Developer based in the United States with a
-              passion.
+              Hi, my name is Johnny, a SRE/Developer based in the United States
+              with a passion for Technologies.
               <br />I specialize in automation, cloud infrastructure, security,
               and containerization.
             </p>
