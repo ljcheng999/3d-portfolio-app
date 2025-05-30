@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import * as THREE from "three";
 
 const TechIconCardExperience = ({ model }) => {
-  const scene = useGLTF(model.modelPath);
+  const scene = useGLTF(model.iconPath);
 
   useEffect(() => {
     if (model.name === "Interactive Developer") {
@@ -19,7 +19,12 @@ const TechIconCardExperience = ({ model }) => {
   }, [scene]);
 
   return (
+    // <div style={{ position: "fixed", top: "60px" }}>
+    // <div>
     <Canvas>
+      {/* <Canvas camera={{ position: [0, 0, 0], fov: 35 }}> */}
+      {/* <Canvas camera={{ position: [0, 0, 10] }}> */}
+      {/* <Canvas camera={{ position: [0, 10, 0], fov: 35 }}> */}
       <ambientLight intensity={0.3} />
       <directionalLight position={[5, 5, 5]} intensity={1} />
       <spotLight
@@ -29,6 +34,7 @@ const TechIconCardExperience = ({ model }) => {
         intensity={2}
       />
       <Environment preset="city" />
+      <OrbitControls target={[0, 0, 0]} position={[5, 1, 0]} />
 
       {/* 
         The Float component from @react-three/drei is used to 
@@ -55,6 +61,7 @@ const TechIconCardExperience = ({ model }) => {
 
       <OrbitControls enableZoom={false} />
     </Canvas>
+    // </div>
   );
 };
 

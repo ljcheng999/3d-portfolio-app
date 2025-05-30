@@ -111,7 +111,7 @@ const expCards = [
   },
   {
     review:
-      "I highly recommend Johnny as a Software Engineer. He worked for me as an intern and I would have hired him if I had any openings. As an intern, he quickly came up to speed with the work our team was doing. He was highly motivated, worked on his own but knew when to ask for help, and was quickly contributing changes to our application which were deployed to production. He would be an asset to any team.",
+      "I highly recommend Johnny as a Software Engineer. He worked for me and I would have hired him if I had any openings. As an intern, he quickly came up to speed with the work our team was doing. He was highly motivated, worked on his own but knew when to ask for help, and was quickly contributing changes to our application which were deployed to production. He would be an asset to any team.",
     imgPath: "/images/logos/pearson-logos.png",
     logoPath: "/images/logos/spectrum-logo.png",
     title: "Lead DevOps Engineer",
@@ -194,61 +194,77 @@ const expCards = [
   },
 ];
 
-const techStackImgs = [
-  {
-    name: "React Developer",
-    imgPath: "/images/logos/react.png",
-  },
-  {
-    name: "Python Developer",
-    imgPath: "/images/logos/python.svg",
-  },
-  {
-    name: "Backend Developer",
-    imgPath: "/images/logos/node.png",
-  },
-  {
-    name: "Interactive Developer",
-    imgPath: "/images/logos/three.png",
-  },
-  {
-    name: "Project Manager",
-    imgPath: "/images/logos/git.svg",
-  },
-];
-
 const techStackIcons = [
   {
-    name: "React Developer",
-    modelPath: "/models/react_logo-transformed.glb",
+    name: "Kubernetes",
+    iconPath: "/images/logos/k8s-logo2.png",
+  },
+  {
+    name: "Public Cloud",
+    iconPath: "/models/aws.glb",
+    scale: 0.3,
+    rotation: [0, 0, 0],
+  },
+  {
+    name: "React",
+    iconPath: "/models/react_logo-transformed.glb",
     scale: 1,
     rotation: [0, 0, 0],
   },
   {
-    name: "Python Developer",
-    modelPath: "/models/python-transformed.glb",
+    name: "Golang",
+    iconPath: "/images/logos/golang-logo.png",
+    // name: "Golang",
+    // iconPath: "/models/gopher.glb",
+    // scale: 1,
+    // rotation: [0, 11, 0],
+  },
+  {
+    name: "Python",
+    iconPath: "/models/python-transformed.glb",
     scale: 0.8,
     rotation: [0, 0, 0],
   },
-  {
-    name: "Backend Developer",
-    modelPath: "/models/node-transformed.glb",
-    scale: 5,
-    rotation: [0, -Math.PI / 2, 0],
-  },
-  {
-    name: "Interactive Developer",
-    modelPath: "/models/three.js-transformed.glb",
-    scale: 0.05,
-    rotation: [0, 0, 0],
-  },
-  {
-    name: "Project Manager",
-    modelPath: "/models/git-svg-transformed.glb",
-    scale: 0.05,
-    rotation: [0, -Math.PI / 4, 0],
-  },
+  // {
+  //   name: "Project Manager",
+  //   iconPath: "/images/logos/git.svg",
+  // },
 ];
+
+// const techStackIcons = [
+//   {
+//     name: "Kubernetes",
+//     modelPath: "/models/k8s.glb",
+//     scale: 0.05,
+//     rotation: [0, 0, 0],
+//   },
+//   {
+//     name: "AWS",
+//     modelPath: "/models/aws.glb",
+//     scale: 5,
+//     rotation: [0, 0, 0],
+//     // rotation: [0, -Math.PI / 2, 0],
+//   },
+//   {
+//     name: "React Developer",
+//     modelPath: "/models/react_logo-transformed.glb",
+//     scale: 1,
+//     rotation: [0, 0, 0],
+//   },
+//   {
+//     name: "Python Developer",
+//     modelPath: "/models/python-transformed.glb",
+//     scale: 0.8,
+//     rotation: [0, 0, 0],
+//   },
+
+//   {
+//     name: "Project Manager",
+//     modelPath: "/models/git-svg-transformed.glb",
+//     scale: 0.05,
+//     rotation: [0, -Math.PI / 4, 0],
+//   },
+// ];
 
 export {
   words,
@@ -257,8 +273,8 @@ export {
   logoIconsList,
   abilities,
   expCards,
+  // techStackIcons,
   techStackIcons,
-  techStackImgs,
   // expLogos,
   // testimonials,
   // socialImgs,
