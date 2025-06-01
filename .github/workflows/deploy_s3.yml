@@ -41,6 +41,17 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
+      - name: Setup environment variables
+        run: |
+          if [[ -f .env ]]; then
+            rm -f .env
+          fi
+          echo ${{ env.VITE_APP_EMAILJS_SERVICE_ID }} >> .env
+          echo ${{ env.VITE_APP_EMAILJS_TEMPLATE_ID }} >> .env
+          echo ${{ env.VITE_APP_EMAILJS_PUBLIC_KEY }} >> .env
+          echo ${{ env.VITE_APP_GOOGLE_RECAPTCHA_SITE_KEY }} >> .env
+          echo ${{ env.VITE_APP_GOOGLE_RECAPTCHA_SECRET_KEY }} >> .env
+
       - name: Install Dependencies
         run: npm install
 

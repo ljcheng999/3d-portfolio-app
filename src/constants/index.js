@@ -131,7 +131,7 @@ const expCards = [
   {
     review:
       "JC played a pivotal role in optimizing our CI/CD pipelines, which led to a 55% increase in processing efficiency. He is not only a highly skilled DevOps person but also a fantastic team player, always willing to help whenever people need.",
-    imgPath: "",
+    imgPath: "/images/logos/docker-logo.png",
     logoPath: "/images/logos/spectrum-logo.png",
     title: "DevOps Engineer",
     companyName: "Charter Communications",
@@ -181,7 +181,7 @@ const expCards = [
   {
     review:
       "I had the pleasure of working alongside Johnny at PetraShare Corp. During our time collaborating on various projects, I was consistently impressed by Johnny's deep and practical knowledge of Kubernetes.",
-    imgPath: "",
+    imgPath: "/images/logos/docker-logo.png",
     logoPath: "/images/logos/docker-logo.png",
     title: "Software Developer",
     companyName: "PetraShare Corp",
@@ -231,40 +231,39 @@ const techStackIcons = [
   // },
 ];
 
-// const techStackIcons = [
-//   {
-//     name: "Kubernetes",
-//     modelPath: "/models/k8s.glb",
-//     scale: 0.05,
-//     rotation: [0, 0, 0],
-//   },
-//   {
-//     name: "AWS",
-//     modelPath: "/models/aws.glb",
-//     scale: 5,
-//     rotation: [0, 0, 0],
-//     // rotation: [0, -Math.PI / 2, 0],
-//   },
-//   {
-//     name: "React Developer",
-//     modelPath: "/models/react_logo-transformed.glb",
-//     scale: 1,
-//     rotation: [0, 0, 0],
-//   },
-//   {
-//     name: "Python Developer",
-//     modelPath: "/models/python-transformed.glb",
-//     scale: 0.8,
-//     rotation: [0, 0, 0],
-//   },
+const testimonials = [
+  {
+    name: "Jacob Withhold",
+    review:
+      "I needed an impressive website to expand my advertising and customer base for my tutoring company. I had initially decided to create a website myself using a website template platform. However, I didn't have enough time to design everything myself, and the prices were surprisingly high. Johnny took care of creating website for me after an initial consultation, and then I got to tell him what I liked and didn't like about the prototype in a short conversation. Johnny fixed everything to my exact specifications and the website looks great. I have all the functions I need, and he was able to get my website up and running in a short period of time. The price was quite affordable compared to other offers I got and even compared to the monthly/yearly costs of using a website template platform. I'm very satisfied with the overall experience, and would recommend Johnny to anyone",
+    imgPath: "/images/jacob-withhold.jpg",
+    // imgPath: "/images/client1.png",
+  },
+  {
+    name: "Wade Jackson",
+    review:
+      "Johnny was a pleasure to work with. He understood our requirements perfectly and delivered a website that exceeded our expectations. His skills in both frontend and backend dev are top-notch.",
+    imgPath: "/images/client3.png",
+  },
+];
 
-//   {
-//     name: "Project Manager",
-//     modelPath: "/models/git-svg-transformed.glb",
-//     scale: 0.05,
-//     rotation: [0, -Math.PI / 4, 0],
-//   },
-// ];
+const socialMedias = [
+  {
+    name: "insta",
+    imgPath: "/images/insta.png",
+    link: "https://www.instagram.com/chch6597/",
+  },
+  {
+    name: "fb",
+    imgPath: "/images/fb.png",
+    link: "https://www.facebook.com/zheng.q.qiang.7",
+  },
+  {
+    name: "linkedin",
+    imgPath: "/images/linkedin.png",
+    link: "https://www.linkedin.com/in/chenhao-cheng/",
+  },
+];
 
 export {
   words,
@@ -273,9 +272,7 @@ export {
   logoIconsList,
   abilities,
   expCards,
-  // techStackIcons,
   techStackIcons,
-  // expLogos,
-  // testimonials,
-  // socialImgs,
+  testimonials,
+  socialMedias,
 };
