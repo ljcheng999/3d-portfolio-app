@@ -206,6 +206,33 @@ const techStackIcons = [
     rotation: [0, 0, 0],
   },
   {
+    name: "Terraform",
+    iconPath: "/images/logos/terraform.png",
+  },
+  {
+    name: "Docker",
+    // iconPath: "/images/logos/docker.png",
+    iconPath: "/models/docker.glb",
+    scale: 1,
+    rotation: [0, 0, 0],
+  },
+  {
+    name: "Datadog",
+    iconPath: "/images/logos/datadog.png",
+    // name: "Golang",
+    // iconPath: "/models/gopher.glb",
+    // scale: 1,
+    // rotation: [0, 11, 0],
+  },
+  {
+    name: "ArgoCD",
+    iconPath: "/images/logos/argocd.png",
+    // name: "Golang",
+    // iconPath: "/models/gopher.glb",
+    // scale: 1,
+    // rotation: [0, 11, 0],
+  },
+  {
     name: "React",
     iconPath: "/models/react_logo-transformed.glb",
     scale: 1,
@@ -224,6 +251,14 @@ const techStackIcons = [
     iconPath: "/models/python-transformed.glb",
     scale: 0.8,
     rotation: [0, 0, 0],
+  },
+  {
+    name: "Nodejs",
+    iconPath: "/images/logos/nodejs.png",
+    // name: "Golang",
+    // iconPath: "/models/gopher.glb",
+    // scale: 1,
+    // rotation: [0, 11, 0],
   },
   // {
   //   name: "Project Manager",

@@ -20,6 +20,9 @@ const Contact = () => {
     email: "",
     message: "",
   });
+  const [successMessage, setSuccessMessage] = useState({
+    text: "",
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,6 +52,14 @@ const Contact = () => {
       if (recaptchaRef.current) {
         recaptchaRef.current.reset();
       }
+      setSuccessMessage({
+        text: "Email successfully sent! Lubious Johnny Cheng will reply your email as soon as possible!",
+      });
+      setTimeout(() => {
+        setSuccessMessage({
+          text: "",
+        });
+      }, 5000); // wait 5 seconds, then reset to false
     } catch (error) {
       console.error("Error:", error); // Optional: show toast
       setErrors({
@@ -158,6 +169,13 @@ const Contact = () => {
                 {errors.statusCode ? (
                   <div className="w-full h-full md:px-10 px-5">
                     <p>{errors.text}</p>
+                  </div>
+                ) : (
+                  ""
+                )}
+                {successMessage.text != "" ? (
+                  <div className="w-full h-full md:px-10 px-5">
+                    <p>{successMessage.text}</p>
                   </div>
                 ) : (
                   ""
