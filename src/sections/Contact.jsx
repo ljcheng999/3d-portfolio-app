@@ -51,21 +51,21 @@ const Contact = () => {
       }
     } catch (error) {
       console.error("Error:", error); // Optional: show toast
-      // setErrors({
-      //   statusCode: error.status,
-      //   // text: error.text.text()
-      //   text:
-      //     error.text ==
-      //     "reCAPTCHA: The g-recaptcha-response parameter not found"
-      //       ? "Please validate you're not a robot"
-      //       : "",
-      // });
-      // setTimeout(() => {
-      //   setErrors({
-      //     statusCode: null,
-      //     text: "",
-      //   });
-      // }, 5000); // wait 5 seconds, then reset to false
+      setErrors({
+        statusCode: error.status,
+        // text: error.text.text()
+        text:
+          error.text ==
+          "reCAPTCHA: The g-recaptcha-response parameter not found"
+            ? "Please validate you're not a robot"
+            : "",
+      });
+      setTimeout(() => {
+        setErrors({
+          statusCode: null,
+          text: "",
+        });
+      }, 5000); // wait 5 seconds, then reset to false
     } finally {
       setLoading(false); // Always stop loading, even on error
     }
@@ -137,11 +137,11 @@ const Contact = () => {
                   />
                 </div>
 
-                {/* <ReCAPTCHA
+                <ReCAPTCHA
                   ref={recaptchaRef}
                   sitekey={import.meta.env.VITE_APP_GOOGLE_RECAPTCHA_SITE_KEY}
                   onChange={handleRecaptcha}
-                /> */}
+                />
 
                 <button type="submit" disabled={loading}>
                   <div className="cta-button group">
@@ -155,13 +155,13 @@ const Contact = () => {
                   </div>
                 </button>
 
-                {/* {errors.statusCode ? (
+                {errors.statusCode ? (
                   <div className="w-full h-full md:px-10 px-5">
                     <p>{errors.text}</p>
                   </div>
                 ) : (
                   ""
-                )} */}
+                )}
               </form>
             </div>
           </div>
