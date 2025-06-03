@@ -1,0 +1,99 @@
+name: Deploy to Dev
+run-name: ${{ github.actor }} - Portfolio webapp pipeline
+# on:
+#   push:
+#     branches:
+#       - dev
+#       - main
+
+on: push
+
+env:
+  NODE_VERSION: 22
+
+permissions: #https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services#requesting-the-access-token
+  id-token: write
+  contents: read
+
+# ${{ secrets.AWS_BUCKET_NAME }}
+
+jobs:
+  build_dev:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/dev'
+    environment: dev
+    env:
+      AWS_REGION: ${{ vars.DEFAULT_AWS_REGION }}
+      VITE_APP_EMAILJS_SERVICE_ID: ${{ secrets.VITE_APP_EMAILJS_SERVICE_ID }}
+      VITE_APP_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_APP_EMAILJS_TEMPLATE_ID }}
+      VITE_APP_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_APP_EMAILJS_PUBLIC_KEY }}
+      VITE_APP_GOOGLE_RECAPTCHA_SITE_KEY: ${{ secrets.VITE_APP_GOOGLE_RECAPTCHA_SITE_KEY }}
+      VITE_APP_GOOGLE_RECAPTCHA_SECRET_KEY: ${{ secrets.VITE_APP_GOOGLE_RECAPTCHA_SECRET_KEY }}
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials from AWS account
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.GHA_ROLE_ARN }}
+          role-session-name: pipelinerolesession
+          aws-region: ${{ vars.DEFAULT_AWS_REGION }}
+
+      - name: Setup Node ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build and Package
+        run: npm run build
+
+      - name: Copy files to the S3 with the AWS CLI
+        run: aws s3 cp $GITHUB_WORKSPACE/dist s3://${{ secrets.AWS_BUCKET_NAME }} --recursive
+
+      - name: Invalidate Cloudfront
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID }} --paths /*
+
+  build_prod:
+    runs-on: ubuntu-latest
+    if: "startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main'"
+    environment: main
+    env:
+      AWS_REGION: ${{ vars.DEFAULT_AWS_REGION }}
+      VITE_APP_EMAILJS_SERVICE_ID: ${{ secrets.VITE_APP_EMAILJS_SERVICE_ID }}
+      VITE_APP_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_APP_EMAILJS_TEMPLATE_ID }}
+      VITE_APP_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_APP_EMAILJS_PUBLIC_KEY }}
+      VITE_APP_GOOGLE_RECAPTCHA_SITE_KEY: ${{ secrets.VITE_APP_GOOGLE_RECAPTCHA_SITE_KEY }}
+      VITE_APP_GOOGLE_RECAPTCHA_SECRET_KEY: ${{ secrets.VITE_APP_GOOGLE_RECAPTCHA_SECRET_KEY }}
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials from AWS account
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.GHA_ROLE_ARN }}
+          role-session-name: pipelinerolesession
+          aws-region: ${{ vars.DEFAULT_AWS_REGION }}
+
+      - name: Setup Node ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build and Package
+        run: npm run build
+
+      - name: Copy files to the S3 with the AWS CLI
+        run: aws s3 cp $GITHUB_WORKSPACE/dist s3://${{ secrets.AWS_BUCKET_NAME }} --recursive
+
+      - name: Invalidate Cloudfront
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID }} --paths /*
