@@ -5,13 +5,15 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         <button>
-          <div className="cta-button group">
-            <div className="bg-circle" />
-            <p className="text">Scroll to Top</p>
-            <div className="arrow-wrapper">
-              <img src="/images/arrow-up.png" alt="arrow-up" />
+          <a href="#hero">
+            <div className="cta-button group">
+              <div className="bg-circle" />
+              <p className="text">Scroll to Top</p>
+              <div className="arrow-wrapper">
+                <img src="/images/arrow-up.png" alt="arrow-up" />
+              </div>
             </div>
-          </div>
+          </a>
         </button>
         <div className="socials">
           {socialMedias.map((socialMedia, index) => (
