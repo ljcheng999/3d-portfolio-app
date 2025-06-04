@@ -2,7 +2,9 @@
 
 - ljcheng.kubesources.com
 
-This project is being hosted in AWS S3 + Cloudfront
+Note: This project is being hosted in AWS S3 + Cloudfront. The infrastructure is set with terraform
+
+- [portfolio-3d-stack](https://github.com/ljcheng999/portfolio-3d-stack)
 
 ## Table of Contents
 
