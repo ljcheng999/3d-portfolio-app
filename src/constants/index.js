@@ -37,7 +37,7 @@ const navLinks = [
 
 const logoIconsList = [
   {
-    imgPath: "/images/logos/k8s.png",
+    imgPath: "/images/logos/company-logo-1.png",
   },
   {
     imgPath: "/images/logos/company-logo-2.png",
@@ -197,7 +197,7 @@ const expCards = [
 const techStackIcons = [
   {
     name: "Kubernetes",
-    iconPath: "/images/logos/k8s-logo2.png",
+    iconPath: "/images/logos/k8s-logo.png",
   },
   {
     name: "Public Cloud",
@@ -225,7 +225,7 @@ const techStackIcons = [
     // rotation: [0, 11, 0],
   },
   {
-    name: "ArgoCD",
+    name: "Argo",
     iconPath: "/images/logos/argocd.png",
     // name: "Golang",
     // iconPath: "/models/gopher.glb",
@@ -283,6 +283,16 @@ const testimonials = [
 ];
 
 const socialMedias = [
+  {
+    name: "github",
+    imgPath: "/images/github.png",
+    link: "https://github.com/ljcheng999",
+  },
+  {
+    name: "gitlab",
+    imgPath: "/images/gitlab.png",
+    link: "https://gitlab.com/jcheng-tech-919",
+  },
   {
     name: "insta",
     imgPath: "/images/insta.png",
