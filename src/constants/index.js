@@ -37,7 +37,7 @@ const navLinks = [
 
 const logoIconsList = [
   {
-    imgPath: "/images/logos/k8s.png",
+    imgPath: "/images/logos/company-logo-1.png",
   },
   {
     imgPath: "/images/logos/company-logo-2.png",
@@ -197,7 +197,7 @@ const expCards = [
 const techStackIcons = [
   {
     name: "Kubernetes",
-    iconPath: "/images/logos/k8s-logo2.png",
+    iconPath: "/images/logos/k8s-logo.png",
   },
   {
     name: "Public Cloud",
